@@ -1,13 +1,18 @@
 import "./ProductCard.css";
+const BACKEND_URL = "https://chaste-essentials-1.onrender.com";
 
 const ProductCard = ({ product }) => {
   return (
     <div className="card">
       <img
-        src={product.image}
-        alt={product.name}
-        className="image"
-      />
+  src={
+    product.image
+      ? `${BACKEND_URL}/media/${product.image}`
+      : "/placeholder.png"
+  }
+  alt={product.name}
+  className="image"
+/>
 
       <h3>{product.name}</h3>
 
