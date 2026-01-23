@@ -20,12 +20,11 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-  // Smooth scroll helper for homepage sections
+
   const handleScroll = (e, id) => {
     e.preventDefault();
     closeMenu();
 
-    // If not on homepage, navigate to homepage with hash
     if (location.pathname !== "/") {
       window.location.href = `/#${id}`;
     } else {
