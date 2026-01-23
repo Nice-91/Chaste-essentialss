@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root {
+  --gold: #c9a24d;
+  --black: #0f0f0f;
+  --dark: #161616;
+}
+
+/* ===== GLOBAL ===== */
+.admin-wrapper {
+  min-height: 100vh;
+  background: var(--black);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ===== HEADINGS ===== */
+.admin-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+/* ===== NAV ===== */
+.admin-nav {
+  background: #000;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-nav h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.admin-nav button {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== CARDS ===== */
+.admin-card {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* ===== TABLE ===== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--gold);
+  padding: 12px;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-top: 1px solid #222;
+}
+
+/* ===== BUTTONS ===== */
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: #b03030;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== FORM ===== */
+.admin-form {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: #fff;
+}
+
+.admin-form label {
+  font-size: 0.9rem;
+}
+
+.admin-wrapper {
+    padding: 20px;
+  }
+  
+  .admin-nav {
+    display: flex;
+    justify-content: space-between;
+    background: #111;
+    color: white;
+    padding: 15px;
+  }
+  
+  .admin-content {
+    margin-top: 20px;
+  }
+  
+  .product-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .product-row img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  
+
+
+  

@@ -1,0 +1,282 @@
+/* ================= NAVBAR BASE ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ================= LOGO ================= */
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 44px;
+  border-radius: 50%;
+}
+
+.nav-logo span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #c9a24d;
+  white-space: nowrap;
+}
+
+/* ================= LINKS (DESKTOP DEFAULT) ================= */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 26px;
+  margin-left: auto;
+  padding: 0;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-link-icon {
+  font-size: 13px;
+  color: #c9a24d;
+}
+
+.nav-links li a:hover {
+  color: #c9a24d;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.menu-icon span {
+  width: 24px;
+  height: 2.5px;
+  background: #000;
+  border-radius: 2px;
+}
+
+/* ================= BACKDROP OVERLAY ================= */
+.menu-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1050;
+  backdrop-filter: blur(2px);
+}
+
+.menu-backdrop.open {
+  display: block;
+}
+
+/* ================================================= */
+/* ========== NEST HUB / MEDIUM SCREENS ============= */
+/* ================================================= */
+
+@media (max-width: 1100px) {
+  .navbar {
+    padding: 0 28px;
+  }
+
+  .nav-logo span {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links li a {
+    font-size: 13px;
+  }
+
+  .nav-link-icon {
+    font-size: 12px;
+  }
+}
+
+/* ================================================= */
+/* ================= MOBILE ========================= */
+/* ================================================= */
+
+@media (max-width: 860px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 360px;
+
+    background: #0f0f0f;
+    border-radius: 14px;
+    padding: 16px 14px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links li a {
+    width: auto;
+    min-width: unset;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 13.5px;
+    font-weight: 400;
+    padding: 8px 14px;
+
+    color: #ffffff;
+    border-radius: 8px;
+
+    transition: background 0.25s ease;
+  }
+
+  .nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-link-icon {
+    font-size: 13px;
+  }
+}
+
+/* ================================================= */
+/* ================= SMALL PHONES ================== */
+/* ================================================= */
+
+@media (max-width: 480px) {
+  .nav-logo span {
+    display: none;
+  }
+
+  .nav-logo img {
+    height: 40px;
+  }
+}
+
+/* ================= HAMBURGER MENU (SMALL SCREENS) ================= */
+
+@media (max-width: 900px) {
+  .menu-icon {
+    display: flex;
+    z-index: 1200;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 92%;
+    max-width: 340px;
+    height: auto;
+
+    background: #0f0f0f;
+    border-radius: 18px;
+    padding: 14px;
+
+    display: none;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 38px;
+    gap: 8px;
+
+    justify-items: center;
+    align-items: center;
+
+    z-index: 1100;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  }
+
+  .nav-links.open {
+    display: grid;
+  }
+
+  .nav-links li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links li a {
+    width: 100%;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+
+    transition: all 0.2s ease;
+  }
+
+  .nav-links li a:hover {
+    background: rgba(201, 162, 77, 0.2);
+    color: #c9a24d;
+  }
+
+  .nav-link-icon {
+    font-size: 12px;
+    color: #c9a24d;
+  }
+}

@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shop-category-page {
+  background: #0F0F0F;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+.category-hero {
+  position: relative;
+  padding: 120px 20px 80px;
+  text-align: center;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(171, 170, 168, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #C9A24D, #F4E4C1, #C9A24D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255,255,255,0.7);
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+/* ================= GRID ================= */
+.categories-showcase {
+  padding: 40px 20px 100px;
+}
+
+.showcase-grid {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* ================= CARD ================= */
+.showcase-card {
+  position: relative;
+  height: 550px;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #1a1a1a;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.showcase-card:hover {
+  transform: scale(1.02);
+}
+
+/* ================= IMAGE FIX ================= */
+.card-image-container {
+  position: absolute;
+  inset: 0;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* SHOW FULL IMAGE */
+  object-position: center;
+  filter: brightness(0.65);
+  transition: transform 0.6s ease;
+}
+
+.showcase-card:hover img {
+  transform: scale(1.05);
+}
+
+.card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15,15,15,0.9) 20%,
+    rgba(15,15,15,0.3) 60%,
+    transparent 100%
+  );
+}
+
+/* ================= CONTENT ================= */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 45px 40px;
+  z-index: 2;
+}
+
+.card-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FFFFFF; /* WHITE TEXT */
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255,255,255,0.9); /* WHITE DESCRIPTION */
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* ================= BUTTON ================= */
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  color: #C9A24D;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-card {
+    height: 500px;
+  }
+
+  .card-content h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-hero {
+    padding: 80px 20px 60px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .showcase-card {
+    height: 450px;
+  }
+
+  .card-content {
+    padding: 35px 30px;
+  }
+
+  .card-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-card {
+    height: 400px;
+  }
+
+  .card-content h2 {
+    font-size: 1.9rem;
+  }
+
+  .explore-btn {
+    font-size: 0.75rem;
+  }
+}

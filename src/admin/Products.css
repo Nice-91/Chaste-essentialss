@@ -1,0 +1,261 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+/* Main Container */
+.admin-content {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 40px 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Header Section */
+.admin-content h2 {
+  color: #d4af37;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 30px 0;
+  text-align: center;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Add Product Button */
+.admin-content > a {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+}
+
+.admin-content > a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+  background: linear-gradient(135deg, #b8941f 0%, #d4af37 100%);
+  border-color: #d4af37;
+}
+
+/* Product Row Container */
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.product-row:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+}
+
+.product-row:hover::before {
+  transform: scaleY(1);
+}
+
+/* Product Image */
+.product-row img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.product-row:hover img {
+  border-color: #d4af37;
+  transform: scale(1.05);
+}
+
+/* Product Info */
+.product-row > div {
+  flex: 1;
+}
+
+.product-row h4 {
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.product-row p {
+  margin: 0;
+  color: #d4af37;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Edit Link */
+.product-row a {
+  padding: 10px 20px;
+  background: transparent;
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-row a:hover {
+  background: #1a1a1a;
+  color: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Delete Button */
+.product-row button {
+  padding: 10px 20px;
+  background: transparent;
+  color: #dc2626;
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-row button:hover {
+  background: #dc2626;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Empty State */
+.admin-content:empty::after {
+  content: 'No products found';
+  display: block;
+  text-align: center;
+  color: #999;
+  font-size: 18px;
+  padding: 60px 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-content {
+    padding: 20px 15px;
+  }
+
+  .admin-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .admin-content > a {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .product-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .product-row img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .product-row > div {
+    width: 100%;
+  }
+
+  .product-row a,
+  .product-row button {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+  }
+
+  .product-row:hover {
+    transform: translateX(0);
+    transform: translateY(-2px);
+  }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-row {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar Styling */
+.admin-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.admin-content::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+.admin-content::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
