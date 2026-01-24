@@ -20,7 +20,8 @@ const ProductCard = ({ product }) => {
       )}
 
       <a
-        href={`https://wa.me/250787444606?text=Hello, I'm interested in ${product.name}`}
+        href={`https://wa.me/250787444606?text=${encodeURIComponent(`Hello, Hi, I want to order ${product.name} from chaste essentials`)}`}
+
         className="whatsappButton"
         target="_blank"
         rel="noopener noreferrer"
