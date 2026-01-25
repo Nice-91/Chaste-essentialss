@@ -1,64 +1,52 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../utils/api";  // Adjust path if needed
+import api from "../../../utils/api";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import "./Women.css";
 
 const Women = () => {
-  const [womenProducts, setWomenProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    api.get("/api/products/", { params: { category: "women" } })
+    api
+      .get("products/", { params: { category: "women" } }) // ✅ FIXED
       .then((res) => {
-        setWomenProducts(res.data);
-        setLoading(false);
+        setProducts(res.data);
       })
-      .catch((error) => {
-        console.error("Error fetching women products:", error);
-        setLoading(false);
-      });
+      .catch((err) => console.error("Women fetch error:", err))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return (
-      <div className="women-page">
-        <div className="loading-spinner">Loading products...</div>
-      </div>
-    );
-  }
+  const visibleProducts = showAll ? products : products.slice(0, 8);
 
-  const productsToShow = showAll ? womenProducts : womenProducts.slice(0, 8);
+  if (loading) {
+    return <div className="women-page">Loading products...</div>;
+  }
 
   return (
     <div className="women-page">
       <div className="page-header">
         <h2>WOMEN'S COLLECTION</h2>
         <p className="intro">
-          Elegant styles for every moment. Explore fashion that celebrates your unique style and confidence.
+        Effortless elegance and modern styles crafted to celebrate confidence, beauty, and individuality.
         </p>
       </div>
 
       <div className="products-grid">
-        {productsToShow.length > 0 ? (
-          productsToShow.map((product) => (
-            <div key={product.id} className="product-grid-item">
-              <ProductCard product={product} />
-            </div>
+        {visibleProducts.length > 0 ? (
+          visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))
         ) : (
-          <div className="no-products">
-            <p>No products available in this category yet.</p>
-          </div>
+          <p className="no-products">No products available in this category yet.</p>
         )}
       </div>
 
-      {womenProducts.length > 8 && (
-        <div className="button-container">
-          <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Show Less" : "Show All Products"}
-          </button>
-        </div>
+      {products.length > 8 && (
+        <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
+          {showAll ? "Show Less" : "Show All Products"}
+        </button>
       )}
     </div>
   );

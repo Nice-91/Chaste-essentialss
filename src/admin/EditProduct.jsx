@@ -14,7 +14,7 @@ const EditProduct = () => {
   });
 
   useEffect(() => {
-    api.get(`products/${id}/`).then((res) => {
+    api.get(`products/${id}/`).then((res) => {  // calls /api/products/{id}/
       setForm({
         name: res.data.name,
         price: res.data.price,

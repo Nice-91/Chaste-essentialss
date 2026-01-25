@@ -1,64 +1,52 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../utils/api"; // Adjust path if needed
+import api from "../../../utils/api";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import "./Beauty.css";
 
 const Beauty = () => {
-  const [beautyProducts, setBeautyProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    api.get("/api/products/", { params: { category: "beauty" } })
+    api
+      .get("products/", { params: { category: "beauty" } }) // ✅ FIXED
       .then((res) => {
-        setBeautyProducts(res.data);
-        setLoading(false);
+        setProducts(res.data);
       })
-      .catch((error) => {
-        console.error("Error fetching beauty products:", error);
-        setLoading(false);
-      });
+      .catch((err) => console.error("Beauty fetch error:", err))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return (
-      <div className="beauty-page">
-        <div className="loading-spinner">Loading products...</div>
-      </div>
-    );
-  }
+  const visibleProducts = showAll ? products : products.slice(0, 8);
 
-  const productsToShow = showAll ? beautyProducts : beautyProducts.slice(0, 8);
+  if (loading) {
+    return <div className="beauty-page">Loading products...</div>;
+  }
 
   return (
     <div className="beauty-page">
       <div className="page-header">
         <h2>BEAUTY ESSENTIALS</h2>
         <p className="intro">
-          Elevate your glow with premium beauty essentials. Carefully selected products to help you feel confident and radiant every day.
+        Thoughtfully selected beauty essentials that enhance your natural glow and elevate your daily routine.
         </p>
       </div>
 
       <div className="products-grid">
-        {productsToShow.length > 0 ? (
-          productsToShow.map((product) => (
-            <div key={product.id} className="product-grid-item">
-              <ProductCard product={product} />
-            </div>
+        {visibleProducts.length > 0 ? (
+          visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))
         ) : (
-          <div className="no-products">
-            <p>No products available in this category yet.</p>
-          </div>
+          <p className="no-products">No products available in this category yet.</p>
         )}
       </div>
 
-      {beautyProducts.length > 8 && (
-        <div className="button-container">
-          <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Show Less" : "Show All Products"}
-          </button>
-        </div>
+      {products.length > 8 && (
+        <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
+          {showAll ? "Show Less" : "Show All Products"}
+        </button>
       )}
     </div>
   );

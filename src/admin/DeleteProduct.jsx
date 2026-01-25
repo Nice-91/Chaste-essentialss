@@ -5,7 +5,7 @@ const DeleteProduct = ({ id, onDelete }) => {
     if (!window.confirm("Delete this product?")) return;
 
     try {
-      await api.delete(`products/${id}/`);
+      await api.delete(`products/${id}/`);  // calls /api/products/{id}/
       onDelete(id);
       alert("Product deleted");
     } catch (err) {

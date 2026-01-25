@@ -1,65 +1,60 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../utils/api";  // Adjust this path if needed
+import api from "../../../utils/api";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import "./Men.css";
 
 const Men = () => {
-  const [menProducts, setMenProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    api.get("/api/products/", { params: { category: "men" } })
+    api
+      .get("products/", { params: { category: "men" } }) // ✅ FIXED
       .then((res) => {
-        setMenProducts(res.data);
+        setProducts(res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching men products:", error);
+      .catch((err) => {
+        console.error("Men fetch error:", err);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return (
-      <div className="men-page">
-        <div className="loading-spinner">Loading products...</div>
-      </div>
-    );
+    return <div className="men-page">Loading products...</div>;
   }
 
-  const productsToShow = showAll ? menProducts : menProducts.slice(0, 8);
+  const visibleProducts = showAll ? products : products.slice(0, 8);
 
   return (
     <div className="men-page">
       <div className="page-header">
         <h2>MEN'S COLLECTION</h2>
         <p className="intro">
-          Sharp tailoring and versatile essentials for the modern man. Discover pieces that help you look and feel your best.
+        Sharp tailoring and versatile essentials designed for confidence, comfort, and everyday refinement.
         </p>
       </div>
 
       <div className="products-grid">
-        {productsToShow.length > 0 ? (
-          productsToShow.map((product) => (
-            <div key={product.id} className="product-grid-item">
-              <ProductCard product={product} />
-            </div>
+        {visibleProducts.length > 0 ? (
+          visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))
         ) : (
-          <div className="no-products">
-            <p>No products available in this category yet.</p>
-          </div>
+          <p>No products available in this category yet.</p>
         )}
       </div>
 
-      {menProducts.length > 8 && (
-        <div className="button-container">
-          <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Show Less" : "Show All Products"}
-          </button>
-        </div>
-      )}
+      {products.length > 8 && (
+  <button
+    className="toggle-btn"
+    onClick={() => setShowAll(!showAll)}
+  >
+    {showAll ? "Show Less" : "Show All Products"}
+  </button>
+)}
+
     </div>
   );
 };

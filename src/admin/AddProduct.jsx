@@ -16,16 +16,18 @@ const AddProduct = () => {
 
   const [imagePreview, setImagePreview] = useState(null);
 
+  // Handle file selection & preview
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setForm({ ...form, image: file });
+      setForm((prev) => ({ ...prev, image: file }));
       const reader = new FileReader();
       reader.onloadend = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
     }
   };
 
+  // Form submit handler
   const submit = async (e) => {
     e.preventDefault();
 
@@ -42,6 +44,7 @@ const AddProduct = () => {
       data.append("image", form.image);
       data.append("description", form.description || "");
 
+      // Send form data without overriding headers (let axios set multipart/form-data)
       await api.post("products/", data);
 
       alert("Product added successfully!");
@@ -52,15 +55,21 @@ const AddProduct = () => {
     }
   };
 
-  const isSubmitDisabled =
-    !form.name || !form.price || !form.image;
+  const isSubmitDisabled = !form.name || !form.price || !form.image;
 
   return (
     <div className="add-product-container">
       <div className="add-product-card">
         <div className="add-product-header">
           <div className="add-product-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M12 5v14M5 12h14" />
             </svg>
           </div>
@@ -88,9 +97,7 @@ const AddProduct = () => {
                 placeholder="0.00"
                 required
                 value={form.price}
-                onChange={(e) =>
-                  setForm({ ...form, price: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, price: e.target.value })}
                 min="0"
               />
             </div>
@@ -131,7 +138,7 @@ const AddProduct = () => {
                   className="image-preview-change"
                   onClick={() => {
                     setImagePreview(null);
-                    setForm({ ...form, image: null });
+                    setForm((prev) => ({ ...prev, image: null }));
                   }}
                 >
                   Change

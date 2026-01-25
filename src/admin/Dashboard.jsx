@@ -15,7 +15,8 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const productsRes = await api.get("products/");
+      const productsRes = await api.get("products/");  // api/products/ because of baseURL in api.js
+      console.log("Products fetched:", productsRes.data);
       const products = productsRes.data;
       
       setStats({
@@ -34,9 +35,7 @@ const Dashboard = () => {
           <h1>Admin Dashboard</h1>
           <p>Welcome to Chaste Essentials Admin Panel</p>
         </div>
-        <div className="header-icon">
-         
-        </div>
+        <div className="header-icon"></div>
       </div>
 
       <div className="stats-overview">
