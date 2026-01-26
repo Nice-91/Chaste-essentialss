@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import api from "../utils/api";
 import "./AddProduct.css";
 
 const AddProduct = () => {
@@ -44,7 +44,6 @@ const AddProduct = () => {
       data.append("image", form.image);
       data.append("description", form.description || "");
 
-      // Send form data without overriding headers (let axios set multipart/form-data)
       await api.post("products/", data);
 
       alert("Product added successfully!");
@@ -59,6 +58,15 @@ const AddProduct = () => {
 
   return (
     <div className="add-product-container">
+      {/* Back button on top left */}
+      <button
+        className="back-button"
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+      >
+        ← Back
+      </button>
+
       <div className="add-product-card">
         <div className="add-product-header">
           <div className="add-product-icon">

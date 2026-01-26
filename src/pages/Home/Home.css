@@ -93,6 +93,7 @@
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s ease-out;
+  font-family:'open', sans-serif; 
 }
 
 .home-content.visible {
@@ -122,7 +123,7 @@
 }
 
 .badge-text {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'open', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   color: #FFFFFF;
@@ -130,7 +131,7 @@
 
 /* Main Title */
 .home-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.1;
@@ -329,10 +330,10 @@
   }
   
   .trust-item {
-    flex-basis: auto; /* Let width fit content */
-    justify-content: flex-start; /* Icon + text left aligned */
+    flex-basis: auto; 
+    justify-content: flex-start; 
     text-align: left;
-    width: fit-content; /* shrink-wrap width */
+    width: fit-content; 
   }
   
   .btn {

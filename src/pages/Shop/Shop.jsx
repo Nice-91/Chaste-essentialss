@@ -53,8 +53,9 @@ const Shop = () => {
       <section className="categories-showcase">
         <div className="showcase-grid">
           {categories.map((category, index) => (
-            <div
+            <Link
               key={category.id}
+              to={`/shop/${category.id}`}
               className={`showcase-card ${hoveredCard === index ? "active" : ""}`}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
@@ -68,11 +69,11 @@ const Shop = () => {
                 <h2>{category.name}</h2>
                 <p>{category.description}</p>
 
-                <Link to={`/shop/${category.id}`} className="explore-btn">
+                <span className="explore-btn">
                   Explore All Products →
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

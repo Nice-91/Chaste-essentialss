@@ -34,6 +34,7 @@
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .gold-text {
@@ -43,7 +44,7 @@
 }
 
 .hero-description {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'open', sans-serif;
   color: rgba(255,255,255,0.7);
   max-width: 700px;
   margin: 20px auto 0;
@@ -71,6 +72,9 @@
   background: #1a1a1a;
   cursor: pointer;
   transition: transform 0.4s ease;
+  display: block; /* make Link behave like a block */
+  text-decoration: none; /* remove underline */
+  color: inherit; /* inherit text color */
 }
 
 .showcase-card:hover {
@@ -121,11 +125,12 @@
   font-weight: 700;
   color: #FFFFFF; /* WHITE TEXT */
   margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .card-content p {
-  font-family: 'Poppins', sans-serif;
-  color: rgba(255,255,255,0.9); /* WHITE DESCRIPTION */
+  font-family: 'Open', sans-serif;
+  color: rgba(255,255,255,0.9);
   font-size: 1rem;
   margin-bottom: 25px;
 }
@@ -135,17 +140,18 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'open', sans-serif;
   color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-size: 0.85rem;
-  text-decoration: none;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .explore-btn:hover {
   color: #C9A24D;
+  text-decoration: underline;
 }
 
 /* ================= RESPONSIVE ================= */
