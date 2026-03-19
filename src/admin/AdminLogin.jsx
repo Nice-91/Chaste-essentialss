@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../utils/api"; // ✅ correct axios instance
+import api from "../utils/api"; 
 import "./AdminLogin.css";
 
 const AdminLogin = () => {
@@ -38,7 +38,7 @@ const AdminLogin = () => {
         setError("Invalid username or password.");
       }
     } finally {
-      setLoading(false); // ✅ IMPORTANT
+      setLoading(false); 
     }
   };
 

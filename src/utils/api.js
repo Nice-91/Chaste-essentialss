@@ -9,8 +9,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("adminToken");
 
-  // ✅ Only attach token for non-GET requests
-  if (token && config.method !== "get") {
+  if (token && config.url !== "login/") {
     config.headers.Authorization = `Token ${token}`;
   }
 
