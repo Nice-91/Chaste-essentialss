@@ -10,7 +10,7 @@ const Beauty = () => {
 
   useEffect(() => {
     api
-      .get("products/", { params: { category: "beauty" } }) // ✅ FIXED
+      .get("products/", { params: { category: "beauty" } }) 
       .then((res) => {
         setProducts(res.data);
       })
